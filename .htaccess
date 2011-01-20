@@ -1,0 +1,5 @@
+RewriteEngine	on
+RewriteRule	^corpus/(.+)		item.php?corpus=$1
+RewriteRule	^item/(\w+)/(.+)	item.php?corpus=$1&item=$2
+RewriteRule	^viewpoint/(.+)		topic.php?viewpoint=$1
+RewriteRule	^topic/(.+)/(.+)	topic.php?viewpoint=$1&topic=$2
