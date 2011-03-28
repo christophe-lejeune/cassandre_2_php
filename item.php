@@ -23,13 +23,12 @@
       if (!$isItem) {
         $item = $k->id;
       }
-      echo '{"key":["', $corpus, '","', $item, 
-        '"], "value":{"highlight":{"id":"', $r->value->highlight, 
-        '", "coordinates":[', $k->value->begin, ',', $k->value->end, 
+      echo '{"key":["', $corpus, '","', $item, '","', $r->value->highlight, 
+        '"], "value":{"coordinates":[', $k->value->begin, ',', $k->value->end, 
         '], "topic":{"viewpoint":"', $r->value->viewpoint, '", "id":"',
         $r->value->topic, '"}, "text":"', $k->value->before, $k->key[1],
         ($k->value->actor)?'", "actor":"'.$k->value->actor:'', 
-        '"}}}';
+        '"}}';
     }
   }
   echo(']}');
