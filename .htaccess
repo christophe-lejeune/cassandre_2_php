@@ -1,5 +1,10 @@
-RewriteEngine	on
-RewriteRule	^corpus/(.+)		item.php?corpus=$1
-RewriteRule	^item/(\w+)/(.+)	item.php?corpus=$1&item=$2
-RewriteRule	^viewpoint/(.+)		topic.php?viewpoint=$1
-RewriteRule	^topic/(.+)/(.+)	topic.php?viewpoint=$1&topic=$2
+Options -MultiViews
+Options +FollowSymLinks
+RewriteEngine on
+#RewriteBase /
+RewriteRule ^corpus/(.+)	item.php?corpus=$1 [L]
+RewriteRule ^item/(\w+)/(.+)	item.php?corpus=$1&item=$2 [L]
+RewriteRule ^viewpoint/(.+)	topic.php?viewpoint=$1 [L]
+RewriteRule ^topic/(.+)/(.+)	topic.php?viewpoint=$1&topic=$2 [L]
+RewriteRule php 		- [L]	
+RewriteRule ^(.*)		http://127.0.0.1:5984/cassandre/_design/cassandre/_rewrite/$1 [P]
