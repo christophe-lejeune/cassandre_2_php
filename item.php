@@ -31,6 +31,19 @@
         '}}';
     }
   }
+  $rows = get('item?'.(
+    ($isItem)
+      ?'key=["'.$corpus.'","'.$item.'"]'
+      :'startkey=["'.$corpus.'"]&endkey=["'.$corpus.'",{}]'
+  ))->rows;
+  foreach ($rows as $r) {
+    if ($first) {
+      $first = false;
+    } else {
+      echo ",\n";
+    }
+    echo(json_encode($r));
+  }
   echo(']}');
 
 ?>
