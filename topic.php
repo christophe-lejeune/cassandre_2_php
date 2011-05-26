@@ -28,9 +28,9 @@
         '"], "value":{"highlight":{"id":"', $r->value->highlight, 
         '", "corpus":"', $corpus, '", "item":"', $item,
         '", "coordinates":[', $k->value->begin, ',', $k->value->end, 
-        '], "text":"', $k->value->before, $k->key[1],
-        ($k->value->actor)?'", "actor":"'.$k->value->actor:'', 
-        '"}}}';
+        '], "text":', json_encode($k->value->before.$k->key[1]),
+        ($k->value->actor)?', "actor":'.json_encode($k->value->actor):'', 
+        '}}}';
     }
   }
   echo(']}');
