@@ -2,6 +2,7 @@
 
   include 'http.php';
 
+  header('content-type: application/json;charset=utf-8');
   $viewpoint = $_GET['viewpoint'];
   $topic = $_GET['topic'];
   echo '{"rows":[', "\n";
@@ -26,6 +27,7 @@
       $item = $k->id;
       echo '{"key":["', $viewpoint, '","', $topic, 
         '"], "value":{"highlight":{"id":"', $r->value->highlight, 
+        '|', $k->value->match,
         '", "corpus":"', $corpus, '", "item":"', $item,
         '", "coordinates":[', $k->value->begin, ',', $k->value->end, 
         '], "text":', json_encode($k->value->before.$k->key[1]),

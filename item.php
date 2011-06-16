@@ -2,6 +2,7 @@
 
   include 'http.php';
 
+  header('content-type: application/json;charset=utf-8');
   $corpus = $_GET['corpus'];
   $item = $_GET['item'];
   $isItem = isset($_GET['item']);
@@ -24,6 +25,7 @@
         $item = $k->id;
       }
       echo '{"key":["', $corpus, '","', $item, '","', $r->value->highlight, 
+        '|', $k->value->match,
         '"], "value":{"coordinates":[', $k->value->begin, ',', $k->value->end, 
         '], "topic":{"viewpoint":"', $r->value->viewpoint, '", "id":"',
         $r->value->topic, '"}, "text":', json_encode($k->value->before.$k->key[1]),
