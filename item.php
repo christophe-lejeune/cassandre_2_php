@@ -38,12 +38,15 @@
       ?'key=["'.$corpus.'","'.$item.'"]'
       :'startkey=["'.$corpus.'"]&endkey=["'.$corpus.'",{}]'
   ))->rows;
+  preg_match('#(.+)/(corpus|item)/#', $_SERVER['REQUEST_URI'], $path);
+  $service = 'http://'.$_SERVER['HTTP_HOST'].$path[1]; //TODO port
   foreach ($rows as $r) {
     if ($first) {
       $first = false;
     } else {
       echo ",\n";
     }
+    $r->value->resource = $service.'/text/'.$r->key[0].'/'.$r->key[1];
     echo(json_encode($r));
   }
   echo(']}');
