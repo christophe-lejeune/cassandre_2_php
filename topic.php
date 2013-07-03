@@ -12,7 +12,7 @@
     : 'startkey=["'.$viewpoint.'"]&endkey=["'.$viewpoint.'",{}]';
   $rows = get('topic_pattern?'.$query)->rows;
   foreach ($rows as $r) {
-    $corpus = $r->id;
+    $corpus = $r->value->corpus;
     $topic = $r->key[1];
     $pattern = urlencode($r->value->text);
     $kwic = get('kwic?startkey=["'.$corpus.'","'.$pattern
