@@ -2,9 +2,9 @@ Options -MultiViews
 Options +FollowSymLinks
 RewriteEngine on
 #RewriteBase /
-RewriteRule ^kwic/(\w+)/(.+)	kwic.php?corpus=$1&pole=$2 [L]
+RewriteRule ^kwic/([\w_-]+)/(.+)	kwic.php?corpus=$1&pole=$2 [L]
 RewriteRule ^corpus/(.+)	item.php?corpus=$1 [L]
-RewriteRule ^item/(\w+)/(.+)	item.php?corpus=$1&item=$2 [L]
+RewriteRule ^item/([\w_-]+)/(.+)	item.php?corpus=$1&item=$2 [L]
 RewriteRule ^viewpoint/(.+)	topic.php?viewpoint=$1 [L]
 RewriteRule ^topic/(.+)/(.+)	topic.php?viewpoint=$1&topic=$2 [L]
 RewriteRule php 		- [L]	
