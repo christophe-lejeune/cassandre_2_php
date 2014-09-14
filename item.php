@@ -28,8 +28,7 @@
         '|', $k->value->match,
         '"], "value":{"coordinates":[', $k->value->begin, ',', $k->value->end, 
         '], "topic":{"viewpoint":"', $r->value->viewpoint, '", "id":"',
-        $r->value->topic, '"}, "text":', json_encode($k->value->before.$k->key[1]),
-        ($k->value->actor)?', "actor":'.json_encode($k->value->actor):'', 
+        $r->value->topic, '"}, "text":', json_encode($k->value->context),
         '}}';
     }
   }
